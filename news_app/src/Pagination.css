@@ -1,0 +1,18 @@
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 15%;
+    /* border: 2px solid black; */
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.pagination button{
+    color: white;
+    background-color: black;
+    text-transform: uppercase;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}

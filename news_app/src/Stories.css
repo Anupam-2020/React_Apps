@@ -1,0 +1,38 @@
+.stories {
+    width: 50vw;
+    /* border: 2px solid black; */
+    text-align: start;
+    padding: 1rem 2rem 2rem 2rem;
+    margin-top: 2rem;
+    box-shadow: 3px 3px 10px 0px rgba(70, 67, 67, 0.486);
+    background-color: aliceblue;
+    border-radius: 6px;
+}
+
+.stories p{
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.stories a{
+    text-decoration: none;
+    color: rgb(31, 30, 30);
+    font-size: 14px;
+    float: left;
+}
+
+.extras .remove{
+    float: right;
+    color: red;
+}
+
+.extras .read-more{
+    float: left;
+    /* margin-top: 1rem; */
+}
+
+.extras::after {
+    display: block;
+    content: "";
+    clear: both;
+}

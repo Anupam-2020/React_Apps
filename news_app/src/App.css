@@ -1,0 +1,12 @@
+body{
+  background-color: rgba(133, 167, 218, 0.568);
+}
+
+.news-app{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+}
+

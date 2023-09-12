@@ -1,0 +1,25 @@
+.search-parent{
+    margin-top: 6vh;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: 2px solid black; */
+    width: 50vw;
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.search-bar{
+    margin-top: 1rem;
+    width: 40%;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    border-width: 0.5px;
+    box-shadow: 4px 4px 10px 0;
+}
+
+.search-bar:focus{
+    border-style: none;
+    border-width: 0;
+}
