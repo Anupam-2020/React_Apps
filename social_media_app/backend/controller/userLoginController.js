@@ -8,7 +8,7 @@ exports.loginUser = async(req, resp) => {
         const userInDb = await User.findOne({email: userData.email});
         if(userInDb) {
             const password = await bcrypt.compare(userData.password, userInDb.password);
-            console.log(password);
+            // console.log(password);
             if(password) {
                 return resp.status(201).send({user: userInDb});
             }

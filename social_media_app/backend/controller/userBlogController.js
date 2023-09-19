@@ -72,7 +72,7 @@ exports.findBlogByUserId = async(req, resp) => {
         if(!userBlogs) {
             return resp.status(500).send({message: "No blog found"});
         }
-        return resp.status(200).send({blogs: userBlogs});
+        return resp.status(200).send({user: userBlogs});
     } catch(err) {
         return resp.status(400).send({error: "Something went wrong"});
     }

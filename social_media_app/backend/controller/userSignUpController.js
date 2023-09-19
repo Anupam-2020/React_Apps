@@ -8,7 +8,7 @@ exports.signUpUser = async (req, resp) => {
     if (existingUser) {
       return resp
         .status(400)
-        .send({ message: "User already exist, Try with different email" });
+        .send({ error: "User already exist, Try with different email" });
     }
 
     const newUser = new User({
@@ -18,10 +18,10 @@ exports.signUpUser = async (req, resp) => {
     });
 
     const register = await newUser.save();
-    console.log(register);
+    // console.log(register);
     return resp.status(200).send({ message: "Registration successful" });
   } catch (err) {
-    return resp.status(400).send({ error: err });
+    return resp.status(400).send({ error: err._message });
   }
 };
 
