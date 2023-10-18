@@ -1,4 +1,4 @@
-interface Todo {
+type Todo = {
   title: string,
   isCompleted: boolean,
   readonly _id: string
@@ -6,13 +6,11 @@ interface Todo {
 
 const todos: Todo[] = [];
 
-const todoContainer: HTMLElement = document.querySelector(".todoContainer") as HTMLDivElement;
+const todoContainer: HTMLDivElement = document.querySelector(".todoContainer") as HTMLDivElement;
 
 const todoInput: HTMLInputElement = document.getElementsByName("task")[0] as HTMLInputElement;
 
 const myForm: HTMLFormElement = document.getElementById("form") as HTMLFormElement;
-
-// console.log(todoInput.value)
 
 myForm.onsubmit = (e: SubmitEvent) => {
   e.preventDefault();
@@ -46,7 +44,10 @@ function generateTodoItem(todo: Todo) {
   checkbox.checked = todo.isCompleted;
   checkbox.onchange = () => {
     todoPara.className = checkbox.checked ? "textCut" : ""
+    todo.isCompleted = checkbox.checked
   }
+
+  todoPara.className = checkbox.checked ? "textCut" : ""
 
   // Creating div containing p and checkbox
   const innerDiv: HTMLDivElement = document.createElement("div");
