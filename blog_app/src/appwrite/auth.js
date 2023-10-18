@@ -39,15 +39,11 @@ export class AuthService {
         // eslint-disable-next-line no-useless-catch
         try {
             const currUser = await this.account.get();
-            if(currUser) {
-                return currUser;
-            } else {
-                return null;
-            }
+            if(currUser) return currUser;
+            else return null;
         } catch (error) {
-            throw error;
+            console.log(error);
         }
-       
     }
 
     async logout() {
@@ -55,8 +51,9 @@ export class AuthService {
         try {
             return await this.account.deleteSessions();
         } catch(error) {
-            throw error;
+            console.log(error);
         }
+        return null;
     }
 }
 

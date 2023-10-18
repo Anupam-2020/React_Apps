@@ -25,32 +25,36 @@ function App() {
       console.log(error);
     } finally {
       setLoading(false);
+      console.log(loading);
     }
   }
 
   useEffect(() => {
-    // getCurrUser();
-
-      authService.getCurrentUser()
-      .then(user => {
-        console.log(user);
-        dispatch(actions.login({ user }));
-      })
-      .finally(() => {
-        setLoading(false)
-        console.log(loading);
-      })
-      .catch(error => console.log(error))
+    getCurrUser();
+      // authService.getCurrentUser()
+      // .then(user => {
+      //   console.log(user);
+      //   if(user) {
+      //     dispatch(actions.login({ user }));
+      //   } else {
+      //     dispatch(actions.logout());
+      //   }
+      // })
+      // .finally(() => {
+      //   setLoading(false)
+      //   console.log(loading);
+      // })
+      // .catch(error => console.log(error))
   }, []);
 
   return !loading && (
-    <div className="min-h-screen flex flex-wrap content-between bg-grey-400">
-       <div>
+    <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
+       <div className="w-full block">
         <Header />
         <main>
-          TODO <Outlet />
+          TODO: <Outlet />
         </main>
-        <Footer />
+        {/* <Footer /> */}
        </div>
     </div>
   )
