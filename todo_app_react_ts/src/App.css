@@ -1,0 +1,30 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.taskDiv {
+  display: flex;
+  border: 1px solid white;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem
+}
+
+.deleteButton {
+  background-color: #242424;
+  border: none;
+  cursor: pointer
+}
+
+.editButton {
+  margin-right: 1rem; 
+  cursor: pointer
+}
