@@ -1,8 +1,7 @@
-import { useGlobalContext } from "./context/DemoContext";
+import { useGlobalContext } from "./DemoContext";
 
 const ThemeChange = () => {
   const context = useGlobalContext();
-
   return (
     <div
       style={

@@ -4,7 +4,9 @@ import Box from "./components/Basic";
 import Generics from "./components/Generics";
 import Generics2 from "./components/Basics2";
 import { ThemeProvider } from "./components/context/DemoContext";
-import ThemeChange from "./components/ThemeChange";
+import ThemeChange from "./components/context/ThemeChange";
+import ReducerProject from "./components/reducer/ReducerProject";
+import ReduxCounter from "./components/ReduxCounter";
 
 function App() {
   const [val, setVal] = useState<string | number>("");
@@ -29,9 +31,16 @@ function App() {
   return (
     <ThemeProvider>
       {func}
+      <hr />
       <Generics label={"Search"} value={val} onChange={setVlaue} />
+      <hr />
       <Generics2 />
+      <hr />
       <ThemeChange />
+      <hr />
+      <ReducerProject />
+      <hr />
+      <ReduxCounter />
     </ThemeProvider>
   );
 }
