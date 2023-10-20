@@ -46,6 +46,7 @@ function App() {
     if (edit) {
       const id = todos.findIndex((idx) => idx.id === todoId);
       todos[id] = newTodo;
+      setEdit(false);
     } else {
       newTodo.title ? setTodos((prev) => [...prev, newTodo]) : null;
     }
@@ -100,7 +101,7 @@ function App() {
                 onClick={() => handleEdit(task.id, task.title)}
                 className="editButton"
               >
-                Edit
+                {edit ? 'Done' : 'Edit'}
               </button>
               <button
                 onClick={() => handleDelete(task.id)}
