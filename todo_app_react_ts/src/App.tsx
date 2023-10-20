@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useReducer, useState } from "react";
 import "./App.css";
+import { initialState, reducer } from "./Reducer";
 
 interface TodoItemType {
   title: string;
@@ -7,29 +8,33 @@ interface TodoItemType {
   id: number;
 }
 
-function App() {
-  const [todo, setTask] = useState<TodoItemType["title"]>("");
-  const [todoId, setTodoId] = useState<TodoItemType["id"]>(0);
-  const [tasks, setTasks] = useState<TodoItemType[]>([]);
-  const [edit, setEdit] = useState<boolean>(false);
-  const [completed, setCompleted] =
-    useState<TodoItemType["isCompleted"]>(false);
 
-  const inputTaskHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setTask(event.target.value);
+function App() {
+  const [todo, setTodo] = useState<TodoItemType["title"]>("");
+  const [todoId, setTodoId] = useState<TodoItemType["id"]>(0);
+  const [todos, setTodos] = useState<TodoItemType[]>([]);
+  const [edit, setEdit] = useState<boolean>(false);
+  // const [completed, setCompleted] = useState<TodoItemType["isCompleted"]>(false); // used useReducer hook instead of useState
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const inputTaskHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+    setTodo(event.target.value);
   };
 
   const taskCompletionHandler = (id: TodoItemType["id"], title: TodoItemType["title"]): void => {
-    setCompleted((isCompleted: TodoItemType["isCompleted"]) => !isCompleted);
-    console.log(tasks);
+    // setCompleted((isCompleted: TodoItemType["isCompleted"]) => !isCompleted); // used useReducer hook instead of useState
+    dispatch({type: "completion"})
+
+    console.log(todos);
     const newTodo: TodoItemType = {
       id,
-      isCompleted: completed,
+      isCompleted: state.completed,
       title,
     };
-
-    const currId = tasks.findIndex((task: TodoItemType) => task.id === id);
-    tasks[currId] = newTodo;
+    console.log(state.completed);
+    const currId = todos.findIndex((task: TodoItemType) => task.id === id);
+    todos[currId] = newTodo;
   };
 
   const submitHandler = (): void => {
@@ -39,26 +44,23 @@ function App() {
       id: edit ? todoId : Math.random() * 1000,
     };
     if (edit) {
-      const id = tasks.findIndex((idx) => idx.id === todoId);
-      tasks[id] = newTodo;
+      const id = todos.findIndex((idx) => idx.id === todoId);
+      todos[id] = newTodo;
     } else {
-      newTodo.title ? setTasks((prev) => [...prev, newTodo]) : null;
+      newTodo.title ? setTodos((prev) => [...prev, newTodo]) : null;
     }
-    setTask("");
-    console.log(tasks);
+    setTodo("");
+    console.log(todos);
   };
 
   const handleDelete = (id: number): void => {
-    setTasks((prevTasks: TodoItemType[]) => prevTasks.filter((task: TodoItemType) => task.id !== id));
+    setTodos((prevtodos: TodoItemType[]) => prevtodos.filter((task: TodoItemType) => task.id !== id));
   };
 
-  const handleEdit = (
-    id: TodoItemType["id"],
-    title: TodoItemType["title"]
-  ): void => {
+  const handleEdit = (id: TodoItemType["id"], title: TodoItemType["title"]): void => {
     setEdit(true);
     setTodoId(id);
-    setTask(title);
+    setTodo(title);
   };
 
   return (
@@ -73,7 +75,7 @@ function App() {
         />
         <button onClick={submitHandler}>Add</button>
       </div>
-      {tasks.map((task: TodoItemType) => {
+      {todos.map((task: TodoItemType) => {
         return (
           <div key={task.id} className="taskDiv">
             <div style={{ display: "flex" }}>
