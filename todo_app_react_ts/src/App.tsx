@@ -1,8 +1,9 @@
-import { ChangeEvent, useReducer, useState } from "react";
+import { ChangeEvent, useEffect, useReducer, useState } from "react";
 import "./App.css";
 import { initialState, reducer } from "./Reducer";
+import { saveToLocal } from "./localStorage";
 
-interface TodoItemType {
+export interface TodoItemType {
   title: string;
   isCompleted: boolean;
   id: number;
@@ -17,6 +18,11 @@ function App() {
   // const [completed, setCompleted] = useState<TodoItemType["isCompleted"]>(false); // used useReducer hook instead of useState
 
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    saveToLocal(todos);
+    console.log(todos)
+  },[todos, edit, state.completed]);
 
   const inputTaskHandler = (event: ChangeEvent<HTMLInputElement>): void => {
     setTodo(event.target.value);
