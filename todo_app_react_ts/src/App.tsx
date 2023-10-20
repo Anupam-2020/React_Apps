@@ -101,7 +101,7 @@ function App() {
                 onClick={() => handleEdit(task.id, task.title)}
                 className="editButton"
               >
-                {edit ? 'Done' : 'Edit'}
+                Edit
               </button>
               <button
                 onClick={() => handleDelete(task.id)}
