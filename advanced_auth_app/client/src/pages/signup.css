@@ -1,0 +1,54 @@
+.signupParent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    width: 30vw;
+    margin: auto;
+}
+
+.signup {
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.signupForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.signupForm input {
+    border-radius: 0.6rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-style: none;
+    background-color: rgba(184, 179, 171, 0.668);
+}
+
+.signupForm input:focus {
+    outline: none;
+}
+
+.signupForm button {
+    border-radius: 0.6rem;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-style: none;
+    background-color: rgba(3, 3, 34, 0.836);
+    color: beige;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.belowDiv {
+    display: flex;
+    align-items: center;
+    margin-top: -0.5rem;
+}
+
+.belowDiv span {
+    color: blue;
+    margin-left: 1rem;
+}
