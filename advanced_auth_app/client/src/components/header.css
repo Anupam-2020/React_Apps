@@ -1,0 +1,14 @@
+.navHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(184, 179, 171, 0.668);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.header-right {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
