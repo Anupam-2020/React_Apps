@@ -36,7 +36,7 @@ const signin = async(req, resp, next) => {
         const checkPassword = await bcryptjs.compareSync(password, checkEmail.password);
         if(!checkPassword) return next(errorHandler(401, 'Wrong Credentials'));
         const token = jwt.sign({id: checkEmail._id}, JWT_TOKEN);
-        const {password: hashedPassword, ...rest} = checkEmail._doc;
+        const {password: hashedPassword, ...rest} = checkEmail._doc; // we need to return only checkmail._doc...
         resp.cookie('access_token', token, {httpOnly: true})
         .status(200)
         .json(rest);
