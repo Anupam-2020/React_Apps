@@ -1,0 +1,15 @@
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.arrow {
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+}
